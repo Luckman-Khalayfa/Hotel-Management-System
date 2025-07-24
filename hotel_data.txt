@@ -1,0 +1,22 @@
+USER:luckman,1233
+ROOM:1,1,Standard,150.0,false
+ROOM:2,1,Standard,150.0,false
+ROOM:3,1,Deluxe,200.0,false
+ROOM:4,1,Suite,300.0,true
+ROOM:5,1,Standard,150.0,false
+ROOM:6,2,Deluxe,200.0,false
+ROOM:7,2,Standard,150.0,false
+ROOM:8,2,Suite,300.0,false
+ROOM:9,2,Deluxe,200.0,false
+ROOM:10,2,Standard,150.0,false
+ROOM:11,3,Standard,150.0,false
+ROOM:12,3,Suite,300.0,false
+ROOM:13,3,Standard,150.0,false
+ROOM:14,3,Standard,150.0,false
+ROOM:15,3,Deluxe,200.0,false
+ROOM:16,4,Suite,300.0,false
+ROOM:17,4,Standard,150.0,false
+ROOM:18,4,Deluxe,200.0,false
+ROOM:19,4,Standard,150.0,false
+ROOM:20,4,Suite,300.0,false
+GUEST:Adel,324567,3245678,ljshjfweln@gmail.com,4,Checked In
