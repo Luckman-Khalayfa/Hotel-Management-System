@@ -1,8 +1,8 @@
-USER:luckman,1233
+USER:admin,luckman
 ROOM:1,1,Standard,150.0,false
 ROOM:2,1,Standard,150.0,false
 ROOM:3,1,Deluxe,200.0,false
-ROOM:4,1,Suite,300.0,true
+ROOM:4,1,Suite,300.0,false
 ROOM:5,1,Standard,150.0,false
 ROOM:6,2,Deluxe,200.0,false
 ROOM:7,2,Standard,150.0,false
@@ -19,4 +19,3 @@ ROOM:17,4,Standard,150.0,false
 ROOM:18,4,Deluxe,200.0,false
 ROOM:19,4,Standard,150.0,false
 ROOM:20,4,Suite,300.0,false
-GUEST:Adel,324567,3245678,ljshjfweln@gmail.com,4,Checked In

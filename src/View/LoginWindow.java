@@ -12,8 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class LoginWindow {
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "admin123";
 
     public void show(Stage primaryStage, HotelData hotelData) {
         Stage loginStage = new Stage();
@@ -32,7 +30,11 @@ public class LoginWindow {
 
         Button loginBtn = new Button("Login");
         loginBtn.setOnAction(e -> {
-            if (USERNAME.equals(usernameField.getText()) && PASSWORD.equals(passwordField.getText())) {
+            String enteredUsername = usernameField.getText();
+            String enteredPassword = passwordField.getText();
+
+            // استخدام البيانات المحفوظة في الملف بدلاً من القيم الثابتة
+            if (hotelData.validateLogin(enteredUsername, enteredPassword)) {
                 loginStage.close();
                 // افتح الواجهة الرئيسية
                 MainView mainView = new MainView(hotelData);

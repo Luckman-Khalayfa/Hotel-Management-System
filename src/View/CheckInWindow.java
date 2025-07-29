@@ -71,7 +71,7 @@ public class CheckInWindow {
         Button submitBtn = new Button("Complete Check-In");
         submitBtn.setStyle("-fx-background-color: " + hotelData.getSecondaryColor() + "; -fx-text-fill: white;");
         submitBtn.setOnAction(e -> {
-            if (validateForm(nameField, idField, roomBox)) {
+            if (validateForm(nameField, idField,phoneField,emailField ,roomBox)) {
                 Room selectedRoom = roomBox.getValue();
                 Guest guest = new Guest(
                         nameField.getText(),
@@ -99,8 +99,10 @@ public class CheckInWindow {
         stage.show();
     }
 
-    private boolean validateForm(TextField name, TextField id, ComboBox<Room> room) {
-        if (name.getText().isEmpty() || id.getText().isEmpty() || room.getValue() == null) {
+    private boolean validateForm(TextField name, TextField id, TextField phone, TextField email, ComboBox<Room> room) {
+        // التحقق من الحقول الفارغة
+        if (name.getText().isEmpty() || id.getText().isEmpty() ||
+                phone.getText().isEmpty() || email.getText().isEmpty() || room.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Validation Error");
             alert.setHeaderText(null);
@@ -108,6 +110,40 @@ public class CheckInWindow {
             alert.showAndWait();
             return false;
         }
+
+        // التحقق من رقم الهوية (9 أرقام فقط)
+        String idText = id.getText().trim();
+        if (!idText.matches("\\d{9}")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText(null);
+            alert.setContentText("ID must be exactly 9 digits");
+            alert.showAndWait();
+            return false;
+        }
+
+        // التحقق من رقم الهاتف (10 أرقام فقط)
+        String phoneText = phone.getText().trim();
+        if (!phoneText.matches("\\d{10}")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Phone number must be exactly 10 digits");
+            alert.showAndWait();
+            return false;
+        }
+
+        // التحقق من الإيميل (يجب أن ينتهي بـ @gmail.com)
+        String emailText = email.getText().trim().toLowerCase();
+        if (!emailText.endsWith("@gmail.com") || emailText.length() <= 10) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Email must end with @gmail.com");
+            alert.showAndWait();
+            return false;
+        }
+
         return true;
     }
 }

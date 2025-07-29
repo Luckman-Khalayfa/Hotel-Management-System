@@ -18,7 +18,7 @@ public class HotelData {
     public static final String BUTTON_ACCENT = "#e74c3c";
 
     // بيانات المستخدم
-    private String username = "admin";
+    private String username = "admin";     ////tekon
     private String password = "admin123";
 
     // هياكل البيانات
@@ -63,6 +63,7 @@ public class HotelData {
             room.setCurrentGuest(guest);
             guests.add(guest);
             saveData();
+
         }
     }
 
@@ -80,7 +81,8 @@ public class HotelData {
     // حفظ البيانات في ملف
     public void saveData() {
         try (PrintWriter writer = new PrintWriter("hotel_data.txt")) {
-            // حفظ بيانات المستخدم
+
+            System.out.println("Saving user data: " + username + "," + password);
             writer.println("USER:" + username + "," + password);
 
             // حفظ الغرف
@@ -129,11 +131,13 @@ public class HotelData {
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("USER:")) {
                     String[] data = line.substring(5).split(",");
-                    if (data.length >= 2) {
-                        username = data[0];
-                        password = data[1];
-                    }
-                } else if (line.startsWith("ROOM:")) {
+
+                        this.username = data[0];
+                        this.password = data[1];
+
+                }
+
+                else if (line.startsWith("ROOM:")) {
                     String[] data = line.substring(5).split(",");
                     int number = Integer.parseInt(data[0]);
                     int floor = Integer.parseInt(data[1]);
@@ -197,5 +201,25 @@ public class HotelData {
             if (room.isOccupied()) occupied.add(room);
         }
         return occupied;
+    }
+
+    public boolean validateLogin(String username, String password) {
+        return this.username.equals(username) && this.password.equals(password);
+    }
+
+    public void changePassword(String username, String newPassword) {
+        this.username = username;
+        this.password = newPassword;
+        saveData();
+    }
+
+    // دالة للحصول على اسم المستخدم الحالي
+    public String getCurrentUsername() {
+        return this.username;
+    }
+
+    // دالة للحصول على كلمة السر الحالية (للاستخدام الداخلي فقط)
+    public String getCurrentPassword() {
+        return this.password;
     }
 }
